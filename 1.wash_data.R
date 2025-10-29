@@ -175,6 +175,7 @@ lc <-lc %>% dplyr::rename("Sex" = "p31", "BMI" = "p21001_i0", "Age" = "p21022", 
 final <- lc[,c("eid","Sex","BMI","Age","smoke","telomere","start_data","asthma","COPD","bronchitis","emphysema","Bronchiectasis","IPF")]
 
 
-
-
+# 仅保留COPD，并保存文件
+final <- lc[,c("eid","COPD")]
+fwrite(final,"COPD.csv")
 
