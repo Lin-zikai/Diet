@@ -141,7 +141,7 @@ lc$asthma <- apply(lc[, c("J450", "J458", "J459")], 1, function(x) {
 })
 
 
-lc$COPD <- apply(lc[, c("J440", "J441", "J448", "J449")], 1, function(x) {
+lc$COPD <- apply(lc[, c("J430", "J431", "J432", "J438", "J439", "J440", "J441", "J448", "J449")], 1, function(x) {
   if (all(is.na(x))) {
     return(NA)
   } else {
@@ -158,13 +158,6 @@ lc$bronchitis <- apply(lc[, c("J40", "J410", "J411", "J42")], 1, function(x) {
   }
 })
 
-lc$emphysema <- apply(lc[, c("J430", "J431", "J432", "J438", "J439")], 1, function(x) {
-  if (all(is.na(x))) {
-    return(NA)
-  } else {
-    return(min(x, na.rm = TRUE))
-  }
-})
 
 head(na.omit(lc$asthma))
 head(lc,20)
@@ -172,7 +165,7 @@ head(lc,20)
 
 
 lc <-lc %>% dplyr::rename("Sex" = "p31", "BMI" = "p21001_i0", "Age" = "p21022", "smoke" = "p20116_i0", "telomere" = "p22191_i0", "start_data" = "p53_i0", "Bronchiectasis"="J47","IPF"="J841")
-final <- lc[,c("eid","Sex","BMI","Age","smoke","telomere","start_data","asthma","COPD","bronchitis","emphysema","Bronchiectasis","IPF")]
+final <- lc[,c("eid","Sex","BMI","Age","smoke","telomere","start_data","asthma","COPD","bronchitis","Bronchiectasis","IPF")]
 
 
 # 仅保留COPD，并保存文件
